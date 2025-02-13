@@ -87,4 +87,31 @@ def parallelogram(grid, length, width):
         grid[item[0]][item[1]] = "#"
     return prettyPrint(grid)
 
-print(parallelogram(generateGrid(12,6), 12, 6))
+def trapezoid(grid, length, width):
+    # Using our grid, create a trapezoid
+    # I cannot find out why it wont work above 4 width
+    points = []
+    for i in range(length):
+        z = width-1
+        points.append((z, i))
+    for z in range(width):
+        i = width-1
+        # print(f"Z: {z} | I: {i-z}")
+        points.append((z,i-z))
+    for i in range(round(length/2)):
+        z = 0
+        points.append((z, i+width-1))
+    for z in range(width):
+        top = round(length/2)
+        i = top + round(top/2) -1
+        # print(f"Z: {z} | I: {i+z}")
+        points.append((z,i+z))
+    # print(points)
+    for item in points:
+        grid[item[0]][item[1]] = "#"
+    return prettyPrint(grid)
+
+def kite(grid, length, width):
+    # Using our grid, create a kite
+    pass
+print(rectangle(generateGrid(12,6), 6, 3))
